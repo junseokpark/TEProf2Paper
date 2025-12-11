@@ -346,8 +346,6 @@ TEProf2Paper/
 
 ## 🔍 Detailed Pipeline Steps
 
-### De Novo Discovery Pipeline (Detailed Steps) 
-
 ### De Novo Discovery Pipeline (Detailed Steps)
 
 #### Step 1: Setup arguments.txt

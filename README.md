@@ -665,6 +665,7 @@ rmskhg38_annotate_gtf_update_test_tpm_cuff.py reference_merged_candidates.gff3 a
 Continue with:
 - **Step 9**: Quantification with stringtie (see de novo Step 9)
 - **Step 10**: Process expression output (see de novo Step 10)
+  - **Note**: For reference-guided mode, you may use `mergeAnnotationProcess_Ref.R` instead of `mergeAnnotationProcess.R` in Step 10A, which provides additional filtering options specific to reference-guided analysis
 - **Step 11**: Final statistics (see de novo Step 11)
 
 #### Step 5-7: Translation Analysis (Optional)

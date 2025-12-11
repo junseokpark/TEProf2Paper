@@ -136,7 +136,7 @@ install.packages('Xmisc')
 # Then start R again and run:
 Sys.setenv(TAR = "/bin/tar")
 library(devtools)
-install_url("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz")
+devtools::install_url("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz")
 ```
 
 **Add bin folder to PATH:**
@@ -713,7 +713,7 @@ The main output file contains:
   # Then install Xmisc from archive
   Sys.setenv(TAR = "/bin/tar")
   library(devtools)
-  install_url("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz")
+  devtools::install_url("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz")
   ```
 
 **Problem:** No candidates found after filtering

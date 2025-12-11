@@ -64,11 +64,13 @@ If you use TEProf2 in your research, please cite:
 For users who want to get started quickly:
 
 ```bash
-# 1. Pull Docker image (when available)
-docker pull junseokpark/teprof2:latest
+# 1. Build Docker image from source
+git clone https://github.com/junseokpark/TEProf2Paper.git
+cd TEProf2Paper/docker
+docker build -t teprof2 .
 
 # 2. Run the container
-docker run -it -v /path/to/data:/data junseokpark/teprof2
+docker run -it -v /path/to/data:/data teprof2
 
 # 3. Inside the container, activate the environment
 conda activate teprof2
@@ -133,8 +135,8 @@ install.packages('Xmisc')
 # conda install -c conda-forge r-devtools
 # Then start R again and run:
 Sys.setenv(TAR = "/bin/tar")
-install.packages("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz", 
-                 repos = NULL, type = "source")
+library(devtools)
+install_url("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz")
 ```
 
 **Add bin folder to PATH:**
@@ -651,9 +653,23 @@ gffread -E custom_reference.gtf -o- > reference_merged_candidates.gff3
 rmskhg38_annotate_gtf_update_test_tpm_cuff.py reference_merged_candidates.gff3 arguments.txt
 ```
 
-#### Step 3-8: Follow De Novo Steps 9-14
+#### Step 3-4: Follow De Novo Steps 9-11
 
-Continue with quantification (Step 9), processing (Step 10), statistics (Step 11), and translation (Steps 12-14) as described in the de novo pipeline above.
+Continue with:
+- **Step 9**: Quantification with stringtie (see de novo Step 9)
+- **Step 10**: Process expression output (see de novo Step 10)
+- **Step 11**: Final statistics (see de novo Step 11)
+
+#### Step 5-7: Translation Analysis (Optional)
+
+If you need protein predictions, follow:
+- **Step 12**: Kozak-based translation (see de novo Step 12)
+- **Step 13**: CPC2 analysis (see de novo Step 13)
+- **Step 14**: Final translation (see de novo Step 14)
+
+#### Step 8: Ballgown Integration (Optional)
+
+See de novo Step 15 for Ballgown setup.
 
 ## 📊 Output Files
 
@@ -691,9 +707,13 @@ The main output file contains:
 **Problem:** `Xmisc package installation fails`
 - **Solution:** 
   ```r
+  # Install devtools first if not available
+  install.packages('devtools')
+  
+  # Then install Xmisc from archive
   Sys.setenv(TAR = "/bin/tar")
-  install.packages("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz", 
-                   repos = NULL, type = "source")
+  library(devtools)
+  install_url("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz")
   ```
 
 **Problem:** No candidates found after filtering

@@ -121,7 +121,11 @@ conda env create -f TEProf2.yml
 # Activate the environment
 conda activate teprof2
 
-# Install Xmisc R package
+# Install Xmisc R package manually
+```
+
+Start R and install Xmisc:
+```bash
 R
 ```
 
@@ -131,12 +135,15 @@ In the R console:
 install.packages('Xmisc')
 
 # If the above fails (Xmisc removed from CRAN), use devtools:
-# Exit R and run:
+# Exit R, install devtools via conda:
 # conda install -c conda-forge r-devtools
 # Then start R again and run:
 Sys.setenv(TAR = "/bin/tar")
 library(devtools)
 devtools::install_url("https://cran.r-project.org/src/contrib/Archive/Xmisc/Xmisc_0.2.1.tar.gz")
+
+# Exit R when done
+quit()
 ```
 
 **Add bin folder to PATH:**
@@ -309,7 +316,7 @@ Use this mode when you have a pre-defined set of TE-gene transcripts to quantify
 wget https://wangftp.wustl.edu/~nshah/ucsf/TCGA33Download/reference_merged_candidates.gtf
 
 # 2. Annotate reference (if not pre-annotated)
-rmskhg38_annotate_gtf_update_test_tpm_cuff.py reference_merged_candidates.gff3
+rmskhg38_annotate_gtf_update_test_tpm_cuff.py reference_merged_candidates.gff3 arguments.txt
 
 # 3. Quantify with stringtie
 # 4-8. Process and analyze (see detailed guide below)
